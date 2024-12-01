@@ -1,6 +1,10 @@
 figure out how to take request object or a JSON object.
 Validate data types against the Database Table Models
 
+pip install django_rest_framework
+django-admin startproject mysite djangotutorial
+
+python manage.py startapp polls
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
