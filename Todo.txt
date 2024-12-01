@@ -1,0 +1,13 @@
+figure out how to take request object or a JSON object.
+Validate data types against the Database Table Models
+
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+python manage.py inspectdb --database=default > models_legacy.py
+
+#Single record
+Equityaward.objects.get(awardtype = "Performance").pk_equityaward_id
+
+#Multiple records
+Equityaward.objects.filter(awardtype = "Performance").pk_equityaward_id
