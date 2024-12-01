@@ -1,0 +1,9 @@
+{% if latest_executive_list %}
+    <ul>
+    {% for e in latest_executive_list %}
+        <li><a href="/compensation/{{ Executive.id }}/">{{ Executive.ExecutiveName }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No names are available.</p>
+{% endif %}
