@@ -17,7 +17,13 @@ def addItem(request):
     return Response(serializer.data)
 
 @api_view(['GET'])
-def getEquityAwardData(request):
-    equity_award = EquityAward.objects.all()
-    serializer = EquityAwardSerializer(equity_award, many=True)
+def getExecutive(request, executive_id):
+    executives = Executive.objects.get(pk_executive_id = executive_id)
+    serializer = ExecutiveSerializer(executives)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getEquityAwardData(request, award_id):
+    equity_award = EquityAward.objects.get(pk_equityaward_id = award_id)
+    serializer = EquityAwardSerializer(equity_award)
     return Response(serializer.data)
