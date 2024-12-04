@@ -8,23 +8,33 @@
 from django.db import models
 
 
+class Companies(models.Model):
+    companyname = models.CharField(db_column = 'CompanyName', max_length = 200)
+    pk_companies_id = models.AutoField(db_column = 'PK_Companies_Id', primary_key=True)
+    ticker = models.CharField(db_column = 'Ticker', max_length = 30)
+
+    class Meta:
+        db_table = 'Companies'
+
+class Executive(models.Model):
+    executivename = models.CharField(db_column='ExecutiveName', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    executivetitle = models.CharField(db_column='ExecutiveTitle', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    pk_executive_id = models.AutoField(db_column='PK_Executive_Id', primary_key=True)  # Field name made lowercase.
+    
+    companies = models.ForeignKey('Companies', on_delete = models.DO_NOTHING, blank=True, null=True)
+    #companies = models.ForeignKey('Companies', related_name = 'executive', on_delete = models.DO_NOTHING, blank=True, null=True)
+
+    class Meta:
+        db_table = 'Executive'
+
 class EquityAward(models.Model):
     pk_equityaward_id = models.AutoField(db_column='PK_EquityAward_Id', primary_key=True)  # Field name made lowercase.
     awardtype = models.CharField(db_column='AwardType', max_length=10, blank=True, null=True)  # Field name made lowercase.
     awardsgranted = models.IntegerField(db_column='AwardsGranted', blank=True, null=True)  # Field name made lowercase.
     grantdate = models.DateField(db_column='GrantDate', blank=True, null=True)  # Field name made lowercase.
     stockprice = models.DecimalField(db_column='StockPrice', max_digits=18, decimal_places=2, blank=True, null=True)  # Field name made lowercase. max_digits and decimal_places have been guessed, as this database handles decimal fields as float
-    executive = models.ForeignKey('Executive', models.DO_NOTHING)
+    executive = models.ForeignKey('Executive', on_delete = models.DO_NOTHING, blank=True, null=True)
+    #executive = models.ForeignKey('Executive', related_name = 'equityaward', on_delete = models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         db_table = 'EquityAward'
-
-
-class Executive(models.Model):
-    executivename = models.CharField(db_column='ExecutiveName', max_length=100, blank=True, null=True)  # Field name made lowercase.
-    executivetitle = models.CharField(db_column='ExecutiveTitle', max_length=200, blank=True, null=True)  # Field name made lowercase.
-    pk_executive_id = models.AutoField(db_column='PK_Executive_Id', primary_key=True)  # Field name made lowercase.
-
-    class Meta:
-        db_table = 'Executive'
-
