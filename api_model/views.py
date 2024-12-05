@@ -14,7 +14,9 @@ from api_model.models import EquityAwardValue
 
 from database.models import Executive, EquityAward
 
+from drf_spectacular.utils import extend_schema
 
+@extend_schema(responses = EquityAwardValueSerializer)
 @api_view(['GET'])
 def getEquityAwardValue(request, award_id):
     response = requests.get("http://127.0.0.1:8000/api/data/equityaward/%s" % award_id)
@@ -28,6 +30,7 @@ def getEquityAwardValue(request, award_id):
 
     return Response(serializer.data)
 
+@extend_schema(responses = EquityAwardValueSerializer)
 @api_view(['GET'])
 def getCompanyEquityAwards(request, company_id):
     response = requests.get("http://127.0.0.1:8000/api/data/company/%s/equityawards" % company_id)
@@ -36,9 +39,10 @@ def getCompanyEquityAwards(request, company_id):
 
     for js in response.json():
 
+        executive_name = js['executive']['executivename']
         stock_price = Decimal(js['stockprice'])
         awards_granted = int(js['awardsgranted'])
-        award_value_instance = EquityAwardValue(awardvalue = stock_price * awards_granted)
+        award_value_instance = EquityAwardValue(awardvalue = stock_price * awards_granted, executivename = executive_name)
         serializer_list.append(award_value_instance)
         
     serializer = EquityAwardValueSerializer(serializer_list, many=True)

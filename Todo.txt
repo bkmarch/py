@@ -26,3 +26,6 @@ VSCExtensions
 	Azure static web apps
 	Azure container
 	Dev container
+
+
+https://www.youtube.com/watch?v=XBxssKYf5G0

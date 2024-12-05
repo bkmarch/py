@@ -13,7 +13,6 @@ class CompaniesSerializer(serializers.ModelSerializer):
 class ExecutiveSerializer(serializers.ModelSerializer):
 
     companies = CompaniesSerializer()
-    #equityaward = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
     class Meta:
         model = Executive
@@ -22,8 +21,6 @@ class ExecutiveSerializer(serializers.ModelSerializer):
 class EquityAwardSerializer(serializers.ModelSerializer):
 
     executive = ExecutiveSerializer()
-    #executive = ExecutiveSerializer()
-
     class Meta:
         model = EquityAward
         fields = '__all__'
