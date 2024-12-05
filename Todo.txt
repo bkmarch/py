@@ -1,17 +1,6 @@
+figure out how to take request object or a JSON object.
+Validate data types against the Database Table Models
 
-
-https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-python
-
-caching/memoize
-https://www.django-rest-framework.org/tutorial/1-serialization/
-https://docs.djangoproject.com/en/5.1/intro/tutorial01/
-https://blog.logrocket.com/django-rest-framework-create-api/
-
-pip install django_rest_framework
-django-admin startproject mysite djangotutorial
-
-python manage.py startapp polls
-python manage.py shell
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
@@ -22,3 +11,18 @@ Equityaward.objects.get(awardtype = "Performance").pk_equityaward_id
 
 #Multiple records
 Equityaward.objects.filter(awardtype = "Performance").pk_equityaward_id
+
+
+
+Git
+Azurite if using azure function
+Azure API management - OPEN api integration
+
+Install:
+Docker
+
+VSCExtensions
+	Azure app service
+	Azure static web apps
+	Azure container
+	Dev container
