@@ -1,3 +1,7 @@
+
+
+https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-python
+
 caching/memoize
 https://www.django-rest-framework.org/tutorial/1-serialization/
 https://docs.djangoproject.com/en/5.1/intro/tutorial01/
